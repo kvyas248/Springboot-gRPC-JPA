@@ -10,6 +10,17 @@ buildscript {
 	}
 }
 
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "com.github.jk1:gradle-license-report:1.17"
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.5.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -22,6 +33,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 apply plugin: "com.google.protobuf"
+apply plugin: "com.github.jk1.dependency-license-report"
 
 configurations {
 	compileOnly {
