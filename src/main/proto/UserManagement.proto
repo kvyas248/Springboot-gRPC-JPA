@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package com.kruti.vyas.springbootjpagrpc;
+
+//
+// @author Kruti Vyas
+//
+option java_multiple_files = true;
+option java_package = "com.kruti.vyas.springbootjpagrpc.services";
+option java_outer_classname = "UserManagementProto";
+
+import "google/protobuf/timestamp.proto";
+
+message User{
+  int64 ID = 1;
+  string name = 2;
+  string email = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+}
+
+message CreateUserReply {
+  User User = 1;
+}
+
+message GetUserRequest {
+  int64 id = 1;
+}
+
+message GetUserReply {
+  User User = 1;
+}
+
+message UpdateUserRequest {
+  User User = 1;
+}
+
+message UpdateUserReply {
+  User User = 1;
+}
+
+message DeleteUserRequest {
+  int64 id = 1;
+}
+
+message DeleteUserReply {
+}
+
+message ListUsersRequest {
+}
+
+message ListUsersReply {
+  repeated User Users = 1;
+}
+
+// User Management Service
+service UserManagementService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserReply);
+  rpc GetUser (GetUserRequest) returns (GetUserReply);
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserReply);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserReply);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersReply);
+}
+

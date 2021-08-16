@@ -1,0 +1,7 @@
+pluginManagement {
+    plugins {
+        id 'ocom.google.protobuf' version "${protobufVersion}"
+    }
+}
+
+rootProject.name = 'SpringbootJPAGRPC'
